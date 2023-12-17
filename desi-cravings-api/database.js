@@ -11,7 +11,7 @@ const mongoDB = async () => {
         console.log("connected");
       }
     }
-  );
+  ); 
 };
 
 module.exports = mongoDB();
