@@ -7,11 +7,13 @@ const mongoDB = async () => {
     .connect(DBURL)
     .then(async (req, res) => {
       console.log("connected successfully");
-       // const fetchData = await mongoose.connection.db.collection("food_items");
-      // fetchData.find({}).toArray(function (err, data) {
-      //   if (err) console.log(err);
-      //   else console.log(data);
-      // });
+      const fetchData = await mongoose.connection.db.collection("food_items");
+      fetchData.find({}).toArray(function (err, data) {
+        if (err) console.log(err);
+        else {
+          global.food_items = data;
+        }
+      });
     })
     .catch((err) => {
       console.log("not connected");
