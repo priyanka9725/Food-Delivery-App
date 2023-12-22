@@ -4,13 +4,9 @@ import { Link } from "react-router-dom";
 export default function SignUp() {
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = fetch("");{
-        method: 'POST',
-        header: {
-            'Content-Type': application/json
-        }
+    
     }
-  };
+  // };
   return (
     <>
       <div className="container">
