@@ -10,7 +10,7 @@ export default function Carousel() {
       >
         <div className="carousel-inner" id="carousel">
           <div className="carousel-caption" style={{ zIndex: "11" }}>
-            <form class="d-flex">
+            <form className="d-flex">
               <input
                 className="form-control me-2"
                 type="search"
