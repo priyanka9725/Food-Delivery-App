@@ -1,14 +1,19 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { TiShoppingCart } from "react-icons/ti";
 import Badge from "react-bootstrap/Badge";
 import Modal from "../Modal";
 import Cart from "../screens/Cart";
 import { useCart } from "./ContextReducer";
 
-export default function Navbar() {
-  let items = useCart();
+export default function Navbar(props) {
+  const items = useCart();
+  const loadCart = () => {
+    setCartView(true);
+  };
   const navigate = useNavigate();
   const [cartView, setCartView] = useState(false);
+  localStorage.setItem("temp", "first");
   const handleLogOut = () => {
     localStorage.removeItem("authToken");
     navigate("/login");
@@ -47,7 +52,7 @@ export default function Navbar() {
                   <Link
                     className="nav-link active fs-4"
                     aria-current="page"
-                    to="/"
+                    to="/myOrder"
                   >
                     My Orders
                   </Link>
@@ -76,14 +81,13 @@ export default function Navbar() {
               <div>
                 <div
                   className=" btn bg-success text-white mx-2 fw-medium"
-                  onClick={() => {
-                    setCartView(true);
-                  }}
+                  onClick={loadCart}
                 >
-                  My Cart {"  "}
-                  <Badge pill bg="danger">
+                  <Badge pill bg="warning">
                     {items.length}
+                    <TiShoppingCart />
                   </Badge>
+                  Cart{"  "}
                 </div>
                 {cartView ? (
                   <Modal

@@ -1,7 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useDispatchCart, useCart } from "./ContextReducer";
-
+import { useNavigate } from "react-router-dom";
 export default function Card(props) {
+  let navigate = useNavigate();
   let dispatch = useDispatchCart();
   let options = props.options;
   let data = useCart();
@@ -9,6 +10,12 @@ export default function Card(props) {
   const [qty, setQty] = useState(1);
   const [size, setSize] = useState("");
   const priceRef = useRef();
+
+  const handleClick = () => {
+    if (!localStorage.getItem("authToken")) {
+      navigate("/login");
+    }
+  };
 
   const handleAddToCart = async () => {
     let food = [];
@@ -54,8 +61,6 @@ export default function Card(props) {
       qty: qty,
       size: size,
     });
-
-    // setBtnEnable(true)
   };
 
   let finalPrice = qty * parseInt(options[size]);
@@ -91,12 +96,14 @@ export default function Card(props) {
             <select
               className="m-2 h-100 bg-primary rounded"
               ref={priceRef}
+              style={{ select: "#FF0000" }}
               onChange={(e) => setSize(e.target.value)}
+              onClick={handleClick}
             >
-              {priceOptions.map((data) => {
+              {priceOptions.map((i) => {
                 return (
-                  <option key={data} value={data}>
-                    {data}
+                  <option key={i} value={i}>
+                    {i}
                   </option>
                 );
               })}

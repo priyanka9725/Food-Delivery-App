@@ -30,8 +30,21 @@ router.post(
         location: req.body.location,
         email: req.body.email,
         password: secPassword,
-      });
-      res.json({ success: true });
+      })
+        .then((user) => {
+          const data = {
+            user: {
+              id: user.id,
+            },
+          };
+          const authToken = jwt.sign(data, jwtSecret);
+          success = true;
+          res.json({ success, authToken });
+        })
+        .catch((err) => {
+          console.log(err);
+          res.json({ error: "Please enter a unique value." });
+        });
     } catch (error) {
       console.log(error);
       res.json({ success: false });
@@ -45,7 +58,7 @@ router.post(
   [
     body("email").isEmail(),
 
-    body("password", "Incorrect password format").isLength({ min: 8 }),
+    body("password", "Incorrect password format").exists(),
   ],
 
   async (req, res) => {
@@ -53,7 +66,7 @@ router.post(
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
     }
-    let email = req.body.email;
+    const {email, password} = req.body;
 
     try {
       let userdata = await User.findOne({ email });
@@ -62,6 +75,8 @@ router.post(
           .status(400)
           .json({ errors: "Try logging in with correct email" });
       }
+
+
       const pwdCompare = await bcrypt.compare(
         req.body.password,
         userdata.password
@@ -84,5 +99,17 @@ router.post(
     }
   }
 );
+
+
+router.post("/getuser", fetch, async (req, res) => {
+  try {
+    const userId = req.user.id;
+    const user = await UserModel.findById(userId).select("-password");
+    res.send(user);
+  } catch (error) {
+    console.error(error.message);
+    res.send("Server Error");
+  }
+});
 
 module.exports = router;

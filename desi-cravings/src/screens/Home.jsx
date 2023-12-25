@@ -31,7 +31,7 @@ export default function Home() {
       <Navbar />
       <div
         id="carouselExampleFade"
-        className="carousel slide carousel-fade" 
+        className="carousel slide carousel-fade"
         data-bs-ride="carousel"
       >
         <div className="carousel-inner" id="carousel">
@@ -132,10 +132,8 @@ export default function Home() {
                           className="col-12 col-md-6 col-lg-3"
                         >
                           <Card
-                            Item ={filterItems}
+                            Item={filterItems}
                             options={filterItems.options[0]}
-                            
-                            
                           ></Card>
                         </div>
                       );
