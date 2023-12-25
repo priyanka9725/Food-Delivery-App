@@ -109,7 +109,7 @@ export default function Home() {
       </div>
 
       <div className="container">
-        {Category != []
+        {Category !== []
           ? Category.map((data) => {
               return (
                 <div className="row mb-3 text-white">
@@ -118,7 +118,7 @@ export default function Home() {
                   </div>
 
                   <hr />
-                  {Item != [] ? (
+                  {Item !== [] ? (
                     Item.filter(
                       (foodItems) =>
                         foodItems.CategoryName === data.CategoryName &&
@@ -132,10 +132,10 @@ export default function Home() {
                           className="col-12 col-md-6 col-lg-3"
                         >
                           <Card
-                            foodName={filterItems.name}
+                            Item ={filterItems}
                             options={filterItems.options[0]}
-                            imgSrc={filterItems.img}
-                            des={filterItems.description}
+                            
+                            
                           ></Card>
                         </div>
                       );
