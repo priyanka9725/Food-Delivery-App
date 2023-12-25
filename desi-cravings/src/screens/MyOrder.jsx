@@ -7,7 +7,7 @@ export default function MyOrder() {
 
   const fetchMyOrder = async () => {
     console.log(localStorage.getItem("userEmail"));
-    await fetch("http://localhost:5000/api/OrderData/myOrderData", {
+    await fetch("http://localhost:5000/api/auth/myorderData", {
       // credentials: 'include',
       // Origin:"http://localhost:3000/login",
       method: "POST",
@@ -15,7 +15,7 @@ export default function MyOrder() {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        email: localStorage.getItem("email"),
+        email: localStorage.getItem("userEmail"),
       }),
     }).then(async (res) => {
       let response = await res.json();
@@ -44,8 +44,8 @@ export default function MyOrder() {
                   ? data.orderData.order_data
                       .slice(0)
                       .reverse()
-                      .map(() => {
-                        return Item.map((arrayData) => {
+                      .map((item) => {
+                        return item.map((arrayData) => {
                           return (
                             <div>
                               {arrayData.Order_date ? (

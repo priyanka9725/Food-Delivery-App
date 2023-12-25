@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const port = 5000;
+const cors = require("cors");
 
 const mongoDB = require("./db");
 mongoDB();
@@ -17,10 +18,9 @@ app.use((req, res, next) => {
   next();
 });
 app.use(express.json());
-app.use("/api", require("./Routes/CreateUser"));
-app.use("/api", require("./Routes/DisplayData"));
-app.use("/api", require("./Routes/OrderData"));
-app.use("/api", require("./Routes/GetUserLocation"));
+app.use(cors());
+app.use("/api", require("./Routes/Auth"));
+
 app.listen(port, () => {
   console.log(`Server started on ${port}`);
 });

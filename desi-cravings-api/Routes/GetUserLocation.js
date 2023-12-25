@@ -22,11 +22,11 @@ router.post("/getlocation", async (req, res) => {
         // response = await JSON.parse(response)
         let response = res.data.results[0].components;
         console.log(response);
-        let { village, county, state_district, state, postcode } = response;
+        let { village, country, state_district, state, postcode } = response;
         return String(
           village +
             "," +
-            county +
+            country +
             "," +
             state_district +
             "," +
