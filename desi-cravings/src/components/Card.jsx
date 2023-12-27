@@ -45,9 +45,9 @@ export default function Card(props) {
           price: finalPrice,
           qty: qty,
           size: size,
-          img: props.img,
+          img: props.Item.img,
         });
-        console.log("Size different so simply ADD one more to the list");
+        // console.log("Size different so simply ADD one more to the list");
         return;
       }
       return;
@@ -60,6 +60,7 @@ export default function Card(props) {
       price: finalPrice,
       qty: qty,
       size: size,
+      img: props.Item.img,
     });
   };
 
