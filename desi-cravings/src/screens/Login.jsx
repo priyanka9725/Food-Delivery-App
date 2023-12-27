@@ -144,12 +144,11 @@ const Container = styled.div`
     color: #e5e5e5;
   }
   button {
-    margin-top: 50px;
     left: 50px;
-    width: 100%;
+    width: 40%;
     background-color: #ffffff;
     color: #080710;
-    padding: 10px 0;
+    padding: 4px 0;
     font-size: 18px;
     font-weight: 600;
     border-radius: 5px;

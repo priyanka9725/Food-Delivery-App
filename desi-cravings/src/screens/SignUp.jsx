@@ -117,7 +117,7 @@ export default function SignUp() {
 const Container = styled.div`
   .background {
     width: 430px;
-    height: 700px;
+    height: 600px;
     position: absolute;
     transform: translate(-50%, -50%);
     left: 50%;
@@ -125,13 +125,14 @@ const Container = styled.div`
   }
 
   form {
-    height: 520px;
-    width: 400px;
+    height: 720px;
+    width: 500px;
     background-color: rgba(255, 255, 255, 0.13);
     position: absolute;
     transform: translate(-50%, -50%);
     top: 50%;
     left: 70%;
+    bottom: 50%;
     border-radius: 10px;
     backdrop-filter: blur(10px);
     border: 2px solid rgba(17, 56, 129, 0.1);
@@ -152,12 +153,6 @@ const Container = styled.div`
     text-align: center;
   }
 
-  label {
-    display: block;
-    margin-top: 30px;
-    font-size: 16px;
-    font-weight: 500;
-  }
   input {
     display: block;
     height: 50px;
@@ -173,15 +168,14 @@ const Container = styled.div`
     color: #e5e5e5;
   }
   button {
-    margin-top: 50px;
-    left: 50px;
-    width: 100%;
-    background-color: #ffffff;
+    width: 40%;
+    background-color: #88a3ee;
     color: #080710;
-    padding: 10px 0;
+    padding: 4px 0;
     font-size: 18px;
     font-weight: 600;
     border-radius: 5px;
     cursor: pointer;
   }
+
 `;
